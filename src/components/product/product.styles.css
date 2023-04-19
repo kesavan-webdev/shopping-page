@@ -1,0 +1,31 @@
+.product-card {
+  width: 18rem;
+
+  padding: 2rem;
+  background-color: #fff;
+  margin: 1rem auto;
+  box-shadow: 10px 5px 12px black;
+}
+
+.img-container {
+  max-width: 100%;
+  height: auto;
+}
+.img {
+  max-width: 16rem;
+  height: 15rem;
+  object-fit: cover;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  width: 100%;
+  margin: 10px auto;
+}

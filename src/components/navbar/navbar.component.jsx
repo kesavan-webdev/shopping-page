@@ -2,23 +2,37 @@ import "./navbar.styles.css";
 
 import logo from "../../assets/images/logo.png";
 
+import { Link } from "react-router-dom";
+//h
+import { Context, useContext } from "../../context/cartcontext";
+//h
 const NavBar = () => {
+  const { cartItemCount } = useContext(Context);
+
   return (
     <>
       <nav className="nav-bar">
         <div className="logo-container">
-          <img className="logo" src={logo} alt="logo" />
+          <Link to={"/"}>
+            <img className="logo" src={logo} alt="logo" />
+          </Link>
         </div>
         <div className="links-container">
           <ul className="links-lists">
             <li>
-              <button className="btn btn-link">shop</button>
+              <Link to={"/shop"} className="btn btn-link">
+                shop
+              </Link>
             </li>
             <li>
-              <button className="btn btn-link">contact</button>
+              <Link to={"/sign-In"} className="btn btn-link">
+                Sign-In
+              </Link>
             </li>
             <li>
-              <button className="btn btn-link">CartIcon</button>
+              <Link to={"/cart"} className="btn btn-link">
+                CartIcon ({cartItemCount > 0 ? cartItemCount : 0})
+              </Link>
             </li>
           </ul>
         </div>
