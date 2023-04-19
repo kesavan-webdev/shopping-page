@@ -6,7 +6,7 @@ import Cart from "./routes/cart";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 //h
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Context } from "./context/cartcontext";
 import { products } from "./Data";
 //h
@@ -18,35 +18,35 @@ const App = () => {
     cart: [],
   });
 
-  const addToCart = (val) => {
+  const addToCart = (product) => {
     setState({
       ...state,
-      cart: state.cart.find((cartItem) => cartItem.id === val.id)
+      cart: state.cart.find((cartItem) => cartItem.id === product.id)
         ? state.cart.map((cartItem) =>
-            cartItem.id === val.id
+            cartItem.id === product.id
               ? { ...cartItem, count: cartItem.count + 1 }
               : cartItem
           )
-        : [...state.cart, { ...val, count: 1 }],
+        : [...state.cart, { ...product, count: 1 }],
     });
   };
 
-  const increase = (book) => {
+  const increase = (product) => {
     setState({
       ...state,
       cart: state.cart.map((cartItem) =>
-        cartItem.id === book.id
+        cartItem.id === product.id
           ? { ...cartItem, count: cartItem.count + 1 }
           : cartItem
       ),
     });
   };
 
-  const decrease = (book) => {
+  const decrease = (product) => {
     setState({
       ...state,
       cart: state.cart.map((cartItem) =>
-        cartItem.id === book.id
+        cartItem.id === product.id
           ? { ...cartItem, count: cartItem.count > 1 ? cartItem.count - 1 : 1 }
           : cartItem
       ),

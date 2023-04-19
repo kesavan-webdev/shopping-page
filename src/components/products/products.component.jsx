@@ -1,5 +1,5 @@
 // import { useState } from "react";
-import { products } from "../../Data";
+// import { products } from "../../Data";
 
 import ProductCard from "../product/product.component";
 import "./products.styles.css";
@@ -10,6 +10,8 @@ import "./products.styles.css";
 // export const ProductContext =createContext()
 //h
 import { Context, useContext } from "../../context/cartcontext";
+import { v4 as uuidv4 } from "uuid";
+
 //h
 const Products = () => {
   // const [initialProduct, setInitialProducts] = useState();
@@ -31,13 +33,17 @@ const Products = () => {
   // });
   //h
   const { state } = useContext(Context);
+  state.data.map((product) => console.log(product));
   //h
+
   return (
     <div className="products-container">
       {state.data.map((product) => {
         // console.log(product);
-        const { id } = product;
-        return <ProductCard key={id} product={product} cart={state.cart} />;
+
+        return (
+          <ProductCard key={uuidv4()} product={product} cart={state.cart} />
+        );
       })}
     </div>
   );

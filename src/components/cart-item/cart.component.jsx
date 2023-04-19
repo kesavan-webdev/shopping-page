@@ -18,9 +18,8 @@ import "./cart.styles.css";
 import { Context, useContext } from "../../context/cartcontext";
 //j
 //h
-const CartItem = (props) => {
-  const { product } = props;
-  console.log(props);
+const CartItem = (product) => {
+  console.log(product);
 
   const { increase, decrease, removeItem } = useContext(Context);
   return (
@@ -33,7 +32,7 @@ const CartItem = (props) => {
         </span>
         <span style={{ display: "flex" }}>
           <span>
-            <b>Price:</b> ₺ {product.price.toFixed(2)} <br />
+            <b>Price:</b> Rs.{product.price} <br />
           </span>
           {product.count > 1 && (
             <>
