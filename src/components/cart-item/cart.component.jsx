@@ -1,27 +1,15 @@
 import "./cart.styles.css";
 
-// const CartItem = () => {
-//   return (
-//     <div>
-//       <img src="" alt="" />
-//       <div>
-//         <span className="name">{}</span>
-//         <span className="price">
-//           {} X ${}
-//         </span>
-//       </div>
-//     </div>
-//   );
-// };
-
 //j
-import { Context, useContext } from "../../context/cartcontext";
+import CartContext from "../../context/cartcontext";
+
+import { useContext } from "react";
 //j
 //h
 const CartItem = ({ product }) => {
   console.log(product);
 
-  const { increase, decrease, removeItem } = useContext(Context);
+  const { increase, decrease, removeItem } = useContext(CartContext);
   return (
     <div className="cart-item">
       <img

@@ -9,7 +9,8 @@ import "./products.styles.css";
 
 // export const ProductContext =createContext()
 //h
-import { Context, useContext } from "../../context/cartcontext";
+import CartContext from "../../context/cartcontext";
+import { useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 //h
@@ -32,7 +33,7 @@ const Products = () => {
   //   });
   // });
   //h
-  const { state } = useContext(Context);
+  const { state } = useContext(CartContext);
   state.data.map((product) => console.log(product));
   //h
 

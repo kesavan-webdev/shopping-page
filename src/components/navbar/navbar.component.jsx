@@ -3,11 +3,14 @@ import "./navbar.styles.css";
 import logo from "../../assets/images/logo.png";
 
 import { Link } from "react-router-dom";
-//h
-import { Context, useContext } from "../../context/cartcontext";
-//h
+
+import { ImCart } from "react-icons/im";
+
+import CartContext from "../../context/cartcontext";
+import { useContext } from "react";
+
 const NavBar = () => {
-  const { cartItemCount } = useContext(Context);
+  const { cartItemCount } = useContext(CartContext);
 
   return (
     <>
@@ -31,7 +34,7 @@ const NavBar = () => {
             </li>
             <li>
               <Link to={"/cart"} className="btn btn-link">
-                CartIcon ({cartItemCount > 0 ? cartItemCount : 0})
+                <ImCart /> ({cartItemCount > 0 ? cartItemCount : 0})
               </Link>
             </li>
           </ul>

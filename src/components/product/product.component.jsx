@@ -1,7 +1,8 @@
 import "./product.styles.css";
 
 //h
-import { Context, useContext } from "../../context/cartcontext";
+import CartContext from "../../context/cartcontext";
+import { useContext } from "react";
 //h
 
 // const ProductCard = ({ product }) => {
@@ -33,7 +34,7 @@ import { Context, useContext } from "../../context/cartcontext";
 
 //h
 const ProductCard = (props) => {
-  const { addToCart } = useContext(Context);
+  const { addToCart } = useContext(CartContext);
 
   const { product, cart } = props;
 
