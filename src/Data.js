@@ -35,22 +35,22 @@ export const categories = [
   {
     id: 1,
     title: "electronics",
-    img: "https://5.imimg.com/data5/SELLER/Default/2020/10/CD/IZ/IY/12789060/mens-jackets-1000x1000.jpg",
+    img: "https://prakashcellularservice.com/wp-content/uploads/2021/07/apples.png",
   },
   {
     id: 2,
     title: "jewelery",
-    img: "https://5.imimg.com/data5/SELLER/Default/2020/10/CD/IZ/IY/12789060/mens-jackets-1000x1000.jpg",
+    img: "https://i.pinimg.com/originals/f7/f4/18/f7f41830aebdb5b137fb3bd6e6713d6d.png",
   },
   {
     id: 3,
     title: "men's clothing",
-    img: "https://5.imimg.com/data5/SELLER/Default/2020/10/CD/IZ/IY/12789060/mens-jackets-1000x1000.jpg",
+    img: "https://png.pngtree.com/png-vector/20211030/ourmid/pngtree-mens-shirts-clothes-cotton-fabrics-warm-clothes-coats-casual-clothes-png-image_4014208.png",
   },
   {
     id: 4,
     title: "women's clothing",
-    img: "https://5.imimg.com/data5/SELLER/Default/2020/10/CD/IZ/IY/12789060/mens-jackets-1000x1000.jpg",
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYGrkPuN7XYGaaPqcDHIg_obw3bJX6lQOHciEWNL46-A&usqp=CAU&ec=48665699",
   },
 ];
 

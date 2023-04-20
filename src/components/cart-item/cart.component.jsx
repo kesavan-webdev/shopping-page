@@ -18,17 +18,21 @@ import "./cart.styles.css";
 import { Context, useContext } from "../../context/cartcontext";
 //j
 //h
-const CartItem = (product) => {
+const CartItem = ({ product }) => {
   console.log(product);
 
   const { increase, decrease, removeItem } = useContext(Context);
   return (
-    <div className="list-item">
-      <img className="list-item-image" src="" alt={product.title} />
-      <div className="list-item-info">
+    <div className="cart-item">
+      <img
+        className="cart-item-image"
+        src={product.image}
+        alt={product.title}
+      />
+      <div className="cart-item-info">
         <span>
           <h3>{product.title}</h3>
-          <small>{product.price}</small>
+          <small>price:{product.price}</small>
         </span>
         <span style={{ display: "flex" }}>
           <span>
@@ -40,20 +44,29 @@ const CartItem = (product) => {
                 <b>Count: </b>x{product.count}
               </span>
               <span style={{ marginLeft: "1rem" }}>
-                <b>Total:</b> ₺ {(product.price * product.count).toFixed(2)}
+                <b>Total:</b> Rs.{(product.price * product.count).toFixed(2)}
               </span>
             </>
           )}
         </span>
-        <div>
-          <button onClick={() => decrease(product)} className="cart-btn">
+        <div className="btn-group">
+          <button
+            onClick={() => decrease(product)}
+            className="btn decrease-btn"
+          >
             {" "}
             -{" "}
           </button>
-          <button onClick={() => removeItem(product.id)} className="remove-btn">
+          <button
+            onClick={() => removeItem(product.id)}
+            className="btn remove-btn"
+          >
             delete
           </button>
-          <button onClick={() => increase(product)} className="cart-btn">
+          <button
+            onClick={() => increase(product)}
+            className="btn increase-btn"
+          >
             {" "}
             +{" "}
           </button>

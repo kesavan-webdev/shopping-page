@@ -12,7 +12,6 @@ import { products } from "./Data";
 //h
 
 const App = () => {
-  //hh
   const [state, setState] = useState({
     data: products,
     cart: [],
