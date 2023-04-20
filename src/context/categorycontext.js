@@ -1,12 +1,29 @@
-import { useState } from "react";
-import { createContext, useContext } from "react";
-import { products } from "../Data";
+import { createContext, useState } from "react";
 
+const CategoryContext = createContext();
 
-export const CategoriesContext = createContext()
+export function CategoryProvider({ children }) {
+  // const [initialProduct, setInitialProducts] = useState();
+  const filteredProducts = null;
+  // const filteredProducts = products.filter((item) => {
+  // if (item.category === "electronics") {
+  //   return setInitialProducts(filterProducts);
+  // } else if (item.category === "jewelery") {
+  //   return setInitialProducts(filterProducts);
+  // } else if (item.category === "men's clothing") {
+  //   return setInitialProducts(filterProducts);
+  // } else if (item.category === "women's clothing") {
+  //   return setInitialProducts(filterProducts);
+  // } else {
+  //   return setInitialProducts(products);
+  // }
+  // });
 
-const [initialProduct,setFilteredProducts] useState([products])
+  return (
+    <CategoryContext.Provider value={{ filteredProducts }}>
+      {children}
+    </CategoryContext.Provider>
+  );
+}
 
-export const categoryFilterProducts=initialProducts.filter((item)=>item.category ==="jewelery")
-
-console.log(categoryFilterProducts);
+export default CategoryContext;

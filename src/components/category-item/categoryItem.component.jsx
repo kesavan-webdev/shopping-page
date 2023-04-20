@@ -1,9 +1,12 @@
 import "./categoryItem.styles.css";
 
+import CategoryContext from "../../context/categorycontext";
+import { useContext } from "react";
+
 const CategoryItem = ({ data }) => {
-  // console.log(data);
+  const { filteredProducts } = useContext(CategoryContext);
   const { title, img } = data;
-  // console.log(img);
+
   return (
     <div className="category-container">
       <div className="img-container">
@@ -11,7 +14,9 @@ const CategoryItem = ({ data }) => {
       </div>
       <div className="category-info">
         <h3 className="title">{title}</h3>
-        <button className="btn btn-shop">Shop Now</button>
+        <button onClick={filteredProducts} className="btn btn-shop">
+          Shop Now
+        </button>
       </div>
     </div>
   );
