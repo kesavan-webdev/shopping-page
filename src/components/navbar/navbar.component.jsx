@@ -7,10 +7,13 @@ import { Link } from "react-router-dom";
 import { ImCart } from "react-icons/im";
 
 import CartContext from "../../context/cartcontext";
+
 import { useContext } from "react";
+import RegisterUserContext from "../../context/registerUserContext";
 
 const NavBar = () => {
   const { cartItemCount } = useContext(CartContext);
+  const { displayname } = useContext(RegisterUserContext);
 
   return (
     <>
@@ -37,6 +40,12 @@ const NavBar = () => {
                 <ImCart /> ({cartItemCount > 0 ? cartItemCount : 0})
               </Link>
             </li>
+            <div>
+              <div className="btn" style={{ color: "#222222" }}>
+                {displayname || "guest"}
+              </div>
+              {console.log(displayname)}
+            </div>
           </ul>
         </div>
       </nav>

@@ -2,6 +2,7 @@ import "./categoryItem.styles.css";
 
 import CategoryContext from "../../context/categorycontext";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 
 const CategoryItem = ({ data }) => {
   const { filteredProducts } = useContext(CategoryContext);
@@ -14,9 +15,11 @@ const CategoryItem = ({ data }) => {
       </div>
       <div className="category-info">
         <h3 className="title">{title}</h3>
-        <button onClick={filteredProducts} className="btn btn-shop">
-          Shop Now
-        </button>
+        <Link to={"/shop"}>
+          <button onClick={filteredProducts} className="btn btn-shop">
+            Shop Now
+          </button>
+        </Link>
       </div>
     </div>
   );
