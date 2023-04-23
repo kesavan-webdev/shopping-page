@@ -1,3 +1,5 @@
+import "./signIn.styles.css";
+
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
@@ -39,19 +41,9 @@ const SignIn = () => {
 
         console.log(errorCode);
         console.log(errorMessage);
-        toast(error.msg);
+        toast(errorCode);
       });
   };
-
-  // const signOutUser = () => {
-  //   signOut(auth)
-  //     .then(() => {
-  //       // Sign-out successful.
-  //     })
-  //     .catch((error) => {
-  //       // An error happened.
-  //     });
-  // };
 
   return (
     <>
@@ -86,20 +78,6 @@ const SignIn = () => {
             required
           />
 
-          {/* <label htmlFor="name">
-            <b>Name</b>
-          </label>
-          <input
-            value={}
-            onChange={(e) => {
-              setUser(e.target.value);
-            }}
-            type="text"
-            placeholder="user name"
-            name="user-name"
-            required
-          /> */}
-
           <div className="clearfix">
             <button type="button" className="cancelbtn">
               Cancel
@@ -111,7 +89,7 @@ const SignIn = () => {
         </div>
       </form>
 
-      <div>
+      <div className="sign-up-link">
         <p>
           Don"t have an Account please
           <Link to={"/sign-up"}>
@@ -119,11 +97,6 @@ const SignIn = () => {
           </Link>
         </p>
       </div>
-      {/* <div>
-        <button onClick={signOutUser} className="cancelbtn">
-          sign Out
-        </button>
-      </div> */}
     </>
   );
 };

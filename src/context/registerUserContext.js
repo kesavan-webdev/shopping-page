@@ -4,9 +4,8 @@ import {
   onAuthStateChanged,
   signOut,
 } from "firebase/auth";
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import { auth, provider } from "../utils/firebase";
-import { useEffect } from "react";
 
 import { toast } from "react-toastify";
 
@@ -14,7 +13,7 @@ const RegisterUserContext = createContext();
 
 export function UserProvider({ children }) {
   const [error, setError] = useState("");
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState("guest");
 
   const signInWithGoogle = async () => {
     await signInWithPopup(auth, provider).then((result) => {
