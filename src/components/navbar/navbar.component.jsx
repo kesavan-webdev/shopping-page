@@ -7,16 +7,19 @@ import { Link } from "react-router-dom";
 import { ImCart } from "react-icons/im";
 
 import CartContext from "../../context/cartcontext";
+import RegisterUserContext from "../../context/registerUserContext";
 
 import { useContext } from "react";
-import RegisterUserContext from "../../context/registerUserContext";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const NavBar = () => {
   const { cartItemCount } = useContext(CartContext);
-  const { displayname } = useContext(RegisterUserContext);
+  const { user, signOutUser } = useContext(RegisterUserContext);
 
   return (
     <>
+      <ToastContainer />
       <nav className="nav-bar">
         <div className="logo-container">
           <Link to={"/"}>
@@ -31,7 +34,7 @@ const NavBar = () => {
               </Link>
             </li>
             <li>
-              <Link to={"/sign-In"} className="btn btn-link">
+              <Link to={"/sign-in"} className="btn btn-link">
                 Sign-In
               </Link>
             </li>
@@ -40,12 +43,11 @@ const NavBar = () => {
                 <ImCart /> ({cartItemCount > 0 ? cartItemCount : 0})
               </Link>
             </li>
-            <div>
+            <li onClick={signOutUser}>
               <div className="btn" style={{ color: "#222222" }}>
-                {displayname || "guest"}
+                {user || "guest"}
               </div>
-              {console.log(displayname)}
-            </div>
+            </li>
           </ul>
         </div>
       </nav>

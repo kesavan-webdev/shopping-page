@@ -1,34 +1,62 @@
-import { useContext, useState } from "react";
-import "./signup.styles.css";
-// import { useEffect } from "react";
-import RegisterUserContext from "../../context/registerUserContext";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+
 import { useNavigate } from "react-router-dom";
+
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../utils/firebase";
+
+import RegisterUserContext from "../../context/registerUserContext";
+import { useContext } from "react";
+
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const SignUp = () => {
+const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [user, setUser] = useState("");
+
+  const { setUser } = useContext(RegisterUserContext);
 
   const navigate = useNavigate();
 
-  const { error, register, signInWithGoogle } = useContext(RegisterUserContext);
+  const signInUser = (e) => {
+    e.preventDefault();
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user);
+        setUser(user.email);
+        navigate("/shop");
+        toast("Logged-In");
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    register(email, password);
-    navigate("/sign-in");
+        const errorMessage = error.message;
+
+        console.log(errorCode);
+        console.log(errorMessage);
+        toast(error.msg);
+      });
   };
-  const handleSubmitForGoogle = (e) => {
-    e.preventDefault();
-    signInWithGoogle();
-    toast("signed by google");
-  };
+
+  // const signOutUser = () => {
+  //   signOut(auth)
+  //     .then(() => {
+  //       // Sign-out successful.
+  //     })
+  //     .catch((error) => {
+  //       // An error happened.
+  //     });
+  // };
+
   return (
     <>
       <ToastContainer />
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={signInUser}>
         <div className="container">
           <label htmlFor="email">
             <b>Email</b>
@@ -58,11 +86,11 @@ const SignUp = () => {
             required
           />
 
-          <label htmlFor="name">
+          {/* <label htmlFor="name">
             <b>Name</b>
           </label>
           <input
-            value={user}
+            value={}
             onChange={(e) => {
               setUser(e.target.value);
             }}
@@ -70,27 +98,33 @@ const SignUp = () => {
             placeholder="user name"
             name="user-name"
             required
-          />
+          /> */}
 
           <div className="clearfix">
             <button type="button" className="cancelbtn">
               Cancel
             </button>
             <button type="submit" className="signupbtn">
-              Sign Up
+              Sign In
             </button>
           </div>
-
-          <div className="error-msg">{error ? <h2>{error}</h2> : null}</div>
         </div>
       </form>
+
       <div>
-        <button onClick={handleSubmitForGoogle} className="signupbtn">
-          SignIn with Google
-        </button>
+        <p>
+          Don"t have an Account please
+          <Link to={"/sign-up"}>
+            <span>Sign Up</span>
+          </Link>
+        </p>
       </div>
+      {/* <div>
+        <button onClick={signOutUser} className="cancelbtn">
+          sign Out
+        </button>
+      </div> */}
     </>
   );
 };
-
-export default SignUp;
+export default SignIn;

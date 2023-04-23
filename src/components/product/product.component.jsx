@@ -3,6 +3,10 @@ import "./product.styles.css";
 //h
 import CartContext from "../../context/cartcontext";
 import { useContext } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import RegisterUserContext from "../../context/registerUserContext";
+
 //h
 
 // const ProductCard = ({ product }) => {
@@ -35,11 +39,13 @@ import { useContext } from "react";
 //h
 const ProductCard = (props) => {
   const { addToCart } = useContext(CartContext);
+  const { user } = useContext(RegisterUserContext);
 
   const { product, cart } = props;
 
   return (
     <>
+      <ToastContainer />
       <div className="product-card">
         <div className="product-info">
           <div className="img-container">
@@ -52,24 +58,36 @@ const ProductCard = (props) => {
             Rating: <span>{product.rating.rate}</span>
           </h3>
         </div>
-        <div className="btn-container">
+        {user !== "guest" ? (
+          <div className="btn-container">
+            <button
+              className="btn btn-addToCart"
+              onClick={() => addToCart(product)}
+            >
+              Add to Cart
+            </button>
+            {cart.map((cartItem) =>
+              cartItem.id === product.id ? (
+                cartItem.count > 0 ? (
+                  <span style={{ marginLeft: "5px" }}>
+                    {" "}
+                    ({cartItem.count} in the shopping cart){" "}
+                  </span>
+                ) : null
+              ) : null
+            )}
+          </div>
+        ) : (
           <button
             className="btn btn-addToCart"
-            onClick={() => addToCart(product)}
+            onClick={() => {
+              toast("please Sign In");
+            }}
           >
-            Add to Cart
+            {" "}
+            Add to Cart{" "}
           </button>
-          {cart.map((cartItem) =>
-            cartItem.id === product.id ? (
-              cartItem.count > 0 ? (
-                <span style={{ marginLeft: "5px" }}>
-                  {" "}
-                  ({cartItem.count} in the shopping cart){" "}
-                </span>
-              ) : null
-            ) : null
-          )}
-        </div>
+        )}
       </div>
     </>
   );

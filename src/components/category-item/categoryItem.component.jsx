@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 const CategoryItem = ({ data }) => {
   const { filteredProducts } = useContext(CategoryContext);
+
   const { title, img } = data;
 
   return (

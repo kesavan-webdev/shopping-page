@@ -6,51 +6,69 @@ import {
 } from "firebase/auth";
 import { createContext, useState } from "react";
 import { auth, provider } from "../utils/firebase";
+import { useEffect } from "react";
+
+import { toast } from "react-toastify";
 
 const RegisterUserContext = createContext();
 
 export function UserProvider({ children }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [displayname, setDisplayName] = useState("");
-
-  onAuthStateChanged(auth, (currentUser) => {
-    setDisplayName(currentUser.displayName);
-  });
+  const [error, setError] = useState("");
+  const [user, setUser] = useState("");
 
   const signInWithGoogle = async () => {
     await signInWithPopup(auth, provider).then((result) => {
       const user = result.user;
-      setDisplayName(user.displayName);
-      console.log(displayname);
+      console.log(user);
+      setUser(user.displayName);
     });
   };
 
-  const register = async () => {
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        const uid = user.uid;
+        console.log(uid);
+        // ...
+      } else {
+        // User is signed out
+        // ...
+      }
+    });
+  });
+
+  const register = async (email, password) => {
     try {
       const user = await createUserWithEmailAndPassword(auth, email, password);
       console.log(user);
-      setDisplayName(user.user.email);
-      console.log(displayname);
     } catch (error) {
       console.log(error.msg);
+      setError(error.msg);
     }
   };
 
-  const signOutUser = async () => {
-    await signOut(auth);
-    setDisplayName(displayname);
+  const signOutUser = () => {
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        console.log("signed out");
+        toast("signed Out");
+        setUser("guest");
+      })
+      .catch((error) => {
+        // An error happened.
+      });
   };
 
   return (
     <RegisterUserContext.Provider
       value={{
-        email,
-        setEmail,
-        password,
-        setPassword,
-        displayname,
-        setDisplayName,
+        user,
+        setUser,
+        error,
+        setError,
         register,
         signInWithGoogle,
         signOutUser,

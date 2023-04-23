@@ -1,6 +1,9 @@
 import { createContext, useState } from "react";
 import { products } from "../Data";
 
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const CartContext = createContext();
 
 export function CartProvider({ children }) {
@@ -20,6 +23,7 @@ export function CartProvider({ children }) {
           )
         : [...state.cart, { ...product, count: 1 }],
     });
+    toast("item added from cart");
   };
 
   const increase = (product) => {
@@ -49,6 +53,7 @@ export function CartProvider({ children }) {
       ...state,
       cart: state.cart.filter((cartItem) => cartItem.id !== id),
     });
+    toast("item removed from cart");
   };
 
   const cartItemCount = state.cart.reduce(
