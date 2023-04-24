@@ -81,7 +81,7 @@ const ProductCard = (props) => {
           <button
             className="btn btn-addToCart"
             onClick={() => {
-              toast("please Sign In");
+              toast.error("please Sign In");
             }}
           >
             {" "}

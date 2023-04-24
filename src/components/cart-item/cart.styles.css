@@ -1,6 +1,7 @@
 .cart-item {
+  flex: 1;
   padding: 2rem;
-  width: 30rem;
+  width: 20rem;
   margin: 1rem auto;
   background-color: #fff;
   box-shadow: 10px 5px 12px black;

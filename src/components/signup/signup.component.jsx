@@ -23,7 +23,8 @@ const SignUp = () => {
   const handleSubmitForGoogle = (e) => {
     e.preventDefault();
     signInWithGoogle();
-    toast("signed by google");
+    toast.success("signed by google");
+    navigate("/sign-in");
   };
   return (
     <>

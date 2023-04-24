@@ -41,7 +41,7 @@ const SignIn = () => {
 
         console.log(errorCode);
         console.log(errorMessage);
-        toast(errorCode);
+        toast.error(errorCode);
       });
   };
 

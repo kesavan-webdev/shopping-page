@@ -23,7 +23,7 @@ export function CartProvider({ children }) {
           )
         : [...state.cart, { ...product, count: 1 }],
     });
-    toast("item added from cart");
+    toast("item added to cart");
   };
 
   const increase = (product) => {
