@@ -18,7 +18,7 @@ const CartItem = ({ product }) => {
           <img
             className="cart-item-image"
             src={product.image}
-            alt={product.title}
+            alt={product.title.slice(0, 20)}
           />
         </div>
         <div className="cart-item-info">
