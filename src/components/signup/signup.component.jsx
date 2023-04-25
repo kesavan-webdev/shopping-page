@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import { FcGoogle } from "react-icons/fc";
+
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -86,9 +88,9 @@ const SignUp = () => {
         </div>
       </form>
       <div>
-        <button onClick={handleSubmitForGoogle} className="signupbtn">
-          SignIn with Google
-        </button>
+        <div className="google-btn btn" onClick={handleSubmitForGoogle}>
+          <FcGoogle className="google-icon" /> SignIn with Google
+        </div>
       </div>
     </>
   );

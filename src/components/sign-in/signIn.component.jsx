@@ -91,9 +91,9 @@ const SignIn = () => {
 
       <div className="sign-up-link">
         <p>
-          Don"t have an Account please
+          Don't have an Account please
           <Link to={"/sign-up"}>
-            <span>Sign Up</span>
+            <span className="btn sign-up-link-btn"> Sign Up</span>
           </Link>
         </p>
       </div>
