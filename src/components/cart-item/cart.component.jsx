@@ -14,11 +14,13 @@ const CartItem = ({ product }) => {
     <>
       <ToastContainer />
       <div className="cart-item">
-        <img
-          className="cart-item-image"
-          src={product.image}
-          alt={product.title}
-        />
+        <div className="img-container">
+          <img
+            className="cart-item-image"
+            src={product.image}
+            alt={product.title}
+          />
+        </div>
         <div className="cart-item-info">
           <span>
             <h3>{product.title}</h3>

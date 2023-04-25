@@ -18,6 +18,15 @@ const App = () => {
         <Route path="/sign-in" element={<SignInPage />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/cart" element={<Cart />} />
+        <Route
+          path="*"
+          element={
+            <h2 style={{ textAlign: "center", margin: "auto" }}>
+              {" "}
+              Page Not Found
+            </h2>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

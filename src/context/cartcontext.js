@@ -24,6 +24,11 @@ export function CartProvider({ children }) {
         : [...state.cart, { ...product, count: 1 }],
     });
     toast("item added to cart");
+    // console.log(state);
+    // console.log(product);
+    // console.log(state.data);
+    // console.log(state.cart);
+    // console.log(state.cart.count);
   };
 
   const increase = (product) => {
@@ -40,11 +45,23 @@ export function CartProvider({ children }) {
   const decrease = (product) => {
     setState({
       ...state,
-      cart: state.cart.map((cartItem) =>
-        cartItem.id === product.id
-          ? { ...cartItem, count: cartItem.count > 1 ? cartItem.count - 1 : 1 }
-          : cartItem
-      ),
+      cart: state.cart.map((cartItem) => {
+        console.log(cartItem);
+        console.log(cartItem.id);
+        console.log(cartItem.count);
+
+        //   return cartItem.id === product.id && cartItem.count > 1
+        //     ? { ...cartItem, count: cartItem.count - 1 }
+        //     : removeItem(product.id);
+        // }
+
+        return cartItem.id === product.id
+          ? {
+              ...cartItem,
+              count: cartItem.count > 1 ? cartItem.count - 1 : 1,
+            }
+          : cartItem;
+      }),
     });
   };
 

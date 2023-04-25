@@ -34,7 +34,7 @@ const Products = () => {
   // });
   //h
   const { state } = useContext(CartContext);
-  state.data.map((product) => console.log(product));
+  // state.data.map((product) => console.log(product));
   //h
 
   return (

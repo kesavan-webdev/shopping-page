@@ -51,7 +51,7 @@ const ProductCard = (props) => {
           <div className="img-container">
             <img className="img" src={product.image} alt={product.title} />
           </div>
-          <h3 className="title">{product.title}</h3>
+          <h3 className="title">{product.title.slice(0, 20)}</h3>
 
           <h2 className="price">Rs.{product.price}</h2>
           <h3 className="rating">
@@ -69,7 +69,7 @@ const ProductCard = (props) => {
             {cart.map((cartItem) =>
               cartItem.id === product.id ? (
                 cartItem.count > 0 ? (
-                  <span style={{ marginLeft: "5px" }}>
+                  <span className="shop-count">
                     {" "}
                     ({cartItem.count} in the shopping cart){" "}
                   </span>

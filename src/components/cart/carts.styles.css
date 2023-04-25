@@ -1,8 +1,15 @@
 .cart {
-  flex: 1;
   display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
   flex-direction: row;
   text-align: center;
-  font-size: 2rem;
+  font-size: 0.8rem;
   font-weight: bolder;
+}
+.cart-heading {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 2rem auto;
 }

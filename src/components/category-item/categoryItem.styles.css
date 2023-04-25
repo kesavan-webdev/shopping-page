@@ -1,23 +1,14 @@
 .category-container {
-  flex: 1;
-  height: 70vh;
+  width: 35rem;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  background-color: #f0d9d9;
-  padding: 20px;
-  margin: 20px;
+  justify-content: space-between;
+  gap: 1rem;
+  box-shadow: 10px 12px 12px rgba(117, 82, 82, 0.336);
 }
-
-img {
-  max-width: 100%;
-  height: auto;
-}
-
 .category-info {
   display: flex;
+  padding: 2rem;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 2px auto;
 }
