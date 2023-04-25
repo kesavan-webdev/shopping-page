@@ -11,7 +11,6 @@ import "./products.styles.css";
 //h
 import CartContext from "../../context/cartcontext";
 import { useContext } from "react";
-import { v4 as uuidv4 } from "uuid";
 
 //h
 const Products = () => {
@@ -43,7 +42,7 @@ const Products = () => {
         // console.log(product);
 
         return (
-          <ProductCard key={uuidv4()} product={product} cart={state.cart} />
+          <ProductCard key={product.id} product={product} cart={state.cart} />
         );
       })}
     </div>

@@ -10,8 +10,6 @@ import CartContext from "../../context/cartcontext";
 import RegisterUserContext from "../../context/registerUserContext";
 
 import { useContext } from "react";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 const NavBar = () => {
   const { cartItemCount } = useContext(CartContext);
@@ -19,7 +17,6 @@ const NavBar = () => {
 
   return (
     <>
-      <ToastContainer />
       <nav className="nav-bar">
         <div className="logo-container">
           <Link to={"/"}>

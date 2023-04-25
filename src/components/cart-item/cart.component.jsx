@@ -2,7 +2,7 @@ import "./cart.styles.css";
 
 //j
 import CartContext from "../../context/cartcontext";
-import { ToastContainer } from "react-toastify";
+
 import { useContext } from "react";
 //j
 //h
@@ -12,7 +12,6 @@ const CartItem = ({ product }) => {
   const { increase, decrease, removeItem } = useContext(CartContext);
   return (
     <>
-      <ToastContainer />
       <div className="cart-item">
         <div className="img-container">
           <img

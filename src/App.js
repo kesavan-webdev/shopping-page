@@ -7,10 +7,24 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import SignUp from "./components/signup/signup.component";
 import SignInPage from "./routes/signin";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   return (
     <BrowserRouter>
+      <ToastContainer
+        position="top-center"
+        autoClose={900}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />

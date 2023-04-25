@@ -10,9 +10,7 @@ import { auth } from "../../utils/firebase";
 
 import RegisterUserContext from "../../context/registerUserContext";
 import { useContext } from "react";
-
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -31,7 +29,7 @@ const SignIn = () => {
         console.log(user);
         setUser(user.email);
         navigate("/shop");
-        toast("Logged-In");
+        toast.success("Signed-In");
         // ...
       })
       .catch((error) => {
@@ -47,7 +45,6 @@ const SignIn = () => {
 
   return (
     <>
-      <ToastContainer />
       <form onSubmit={signInUser}>
         <div className="container">
           <label htmlFor="email">

@@ -3,8 +3,8 @@ import "./product.styles.css";
 //h
 import CartContext from "../../context/cartcontext";
 import { useContext } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
+
 import RegisterUserContext from "../../context/registerUserContext";
 
 //h
@@ -45,7 +45,6 @@ const ProductCard = (props) => {
 
   return (
     <>
-      <ToastContainer />
       <div className="product-card">
         <div className="product-info">
           <div className="img-container">
